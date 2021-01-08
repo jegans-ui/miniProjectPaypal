@@ -1,0 +1,51 @@
+<h1><span class="blue">&lt;</span>List All<span class="blue">&gt;</span> <span class="yellow">Countries</span></h1>
+<div class='search'> 
+  <div class="search-flds">
+    <div>Search for Country..</div>
+    <input type="text" id="myInput" [(ngModel)]="searchFilter.name" (change)="searchBy()" placeholder="Country Name"></div>
+    <div class="search-flds">
+      <div>Search for Currency..</div>
+      <input type="text" id="myInput" [(ngModel)]="searchFilter.currencyName" (change)="searchBy()" placeholder="Currency Name"></div>
+  <div class="search-flds">
+    <div>Search for Area..</div>
+    <div>
+      <select name="areaOperator" class="form-control" [(ngModel)]="searchFilter.areaOperator">
+        <option *ngFor="let option of searchFilter.operators" [value]="option" >{{option}}</option>
+      </select>
+      <input type="number" id="myInput1" [(ngModel)]="searchFilter.area" (change)="searchBy()">
+    </div>
+  </div>
+  <div class="search-flds">
+    <div>Search for population..</div>
+    <div>
+      <select name="populationOperator" class="form-control" [(ngModel)]="searchFilter.populationOperator">
+        <option *ngFor="let option of searchFilter.operators" [value]="option" >{{option}}</option>
+      </select>
+      <input type="number" id="myInput1" [(ngModel)]="searchFilter.population" (change)="searchBy()">
+    </div>
+  </div>
+  <div class="search-flds"></div>
+</div>
+<div class="search-rslts"><span>Showing Results {{countryList.length}} of {{orgCountryList.length}}</span></div>
+<table class="container">
+  <thead>
+    <tr>
+      <th class='coname asdesc'><h1>Name</h1><span (click)="sortAlphaNum(countryList, 'name', true)">ASC</span> <span (click)="sortAlphaNum(countryList, 'name', false)">DESC</span></th>
+      <th class='cuname asdesc'><h1>Currency Name</h1><span (click)="sortAlphaNum(countryList, 'currencyName', true)">ASC</span> <span (click)="sortAlphaNum(countryList, 'currencyName', false)">DESC</span></th>
+      <th class='area asdesc'><h1>Area</h1><span (click)="sortAlphaNum(countryList, 'area', true)">ASC</span> <span (click)="sortAlphaNum(countryList, 'area', false)">DESC</span></th>
+      <th class='reg asdesc'><h1>Region</h1><span (click)="sortAlphaNum(countryList, 'region', true)">ASC</span> <span (click)="sortAlphaNum(countryList, 'region', false)">DESC</span></th>
+      <th class='subreg asdesc'><h1>Sub region</h1><span (click)="sortAlphaNum(countryList, 'subregion', true)">ASC</span> <span (click)="sortAlphaNum(countryList, 'subregion', false)">DESC</span></th>
+      <th class='population asdesc'><h1>Population</h1><span (click)="sortAlphaNum(countryList, 'population', true)">ASC</span> <span (click)="sortAlphaNum(countryList, 'population', false)">DESC</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let country of countryList">
+      <td>{{country.name}}</td>
+      <td>{{country.currencyName}}</td>
+      <td>{{country.area}}</td>
+      <td>{{country.region}}</td>
+      <td>{{country.subregion}}</td>
+      <td>{{country.population}}</td>
+    </tr>
+  </tbody>
+</table>
